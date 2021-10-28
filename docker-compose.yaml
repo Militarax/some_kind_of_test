@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  flask:
+    build: .
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_DEBUG=1
+      - PYTHONUNBUFFERED=True
+    ports:
+      - "8080:8080"
+    command: python parse_xlsx.py
+    command: flask run --port=8080
+   

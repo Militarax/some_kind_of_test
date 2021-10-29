@@ -17,7 +17,7 @@ def from_mdy_to_ymd_date_format(date: str) -> str:
     return '-'.join([year, month, day])
 
 
-def read_data(week_start: str, week_end: str) -> Dict[str, int or str]:   # LOL int or str we can do it and it won't crack? wtf
+def read_data(week_start: str, week_end: str) -> Dict[str, int or str]:   # LOL int or str we can do it and it won't crack? 
     path = os.path.join(_cwd, 'data')
     filename = os.path.join(path, week_start + '_' + week_end + '.csv')
 
@@ -36,7 +36,7 @@ def read_data(week_start: str, week_end: str) -> Dict[str, int or str]:   # LOL 
 
 
 @app.route('/data', methods=['GET'])
-def hello_world():
+def data_endpoint():
     if request.method == 'GET':
         week_start = request.args.get('week_start')
         week_end = request.args.get('week_end')

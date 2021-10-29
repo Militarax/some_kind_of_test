@@ -5,6 +5,7 @@ from openpyxl import load_workbook
 
 
 def main():
+
 	data_dir = os.path.join(os.getcwd(), 'data')
 	xlsx_files = [os.path.join(data_dir, file) for file in listdir(data_dir) if isfile(join(data_dir, file)) and file.endswith('.xlsx')]
 	
@@ -26,14 +27,13 @@ def main():
 					key = wb[sheet_name]['A' + str(row)].value 
 					amount = wb[sheet_name]['C' + str(row)].value
 
-					if not key:
+					if not key:										# skip rows that dont have any value('total' rows) at A7-A31
 						continue
 
 					file.write(','.join([key.replace(',', ' ') , str(amount) + '\n']))
 				
 				file.write(','.join(['week_start', week_start + '\n']))			# just to be sure that we have start and end in the file
 				file.write(','.join(['week_end', week_end + '\n']))
-
 
 
 if __name__ == '__main__':
